@@ -15,8 +15,8 @@ public interface INode<T extends Comparable<T>> {
 
 	void setRightChild(INode<T> rightChild);
 	
-	public int compareTo(T data2);
-	
-	public int compareTo(INode<T> node);
+//	public int compareTo(T data2);
+//	
+//	public int compareTo(INode<T> node);
     
 }

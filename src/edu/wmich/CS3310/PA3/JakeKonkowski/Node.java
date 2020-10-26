@@ -41,12 +41,12 @@ public class Node<T extends Comparable<T>> implements INode<T> {
 		this.rightChild = rightChild;
 	}
 	
-	public int compareTo(T data2) {
-		return this.data.compareTo(data2);
-	}
-	
-	public int compareTo(INode<T> node) {
-		return this.data.compareTo(node.getData());
-	}
+//	public int compareTo(T data2) {
+//		return this.data.compareTo(data2);
+//	}
+//	
+//	public int compareTo(INode<T> node) {
+//		return this.data.compareTo(node.getData());
+//	}
 
 }

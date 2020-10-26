@@ -6,12 +6,17 @@ import java.util.Stack;
 public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 	
 	INode<T> root;
+	DataComparator<T> dc;
 	
-	public BinarySearchTree(INode<T> root) {
+	public BinarySearchTree(INode<T> root, DataComparator<T> dc) {
 		this.root = root;
+		this.dc = dc;
 	}
 	
-	public BinarySearchTree(T[] array) {
+	public BinarySearchTree(T[] array, DataComparator<T> dc) {
+		
+		this.dc = dc;
+		
 		if (array.length == 0) {
 			return;
 		}
@@ -130,7 +135,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 		System.out.println("");
 	}
 
-	@Override
+	//@Override
 	public INode<T> insert(INode<T> root, T data) {
 		Boolean inserted = false;
 		
@@ -138,7 +143,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 		//Then it inserts the value
 		while (!inserted) {
 			
-			if (root.compareTo(data) < 0) {
+			if (dc.compare(root.getData(), data) < 0) {
 				if (root.getRightChild() != null) {
 					root = root.getRightChild();
 				} else {
@@ -163,14 +168,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 		return null;
 	}
 
-	@Override
+	//@Override
 	public INode<T> remove(INode<T> root, T data) {
 		INode<T> currentNode = root;
 		INode<T> previousNode = null;
 		
 		while (currentNode != null && currentNode.getData() != data) {
 			previousNode = currentNode;
-			if (currentNode.compareTo(data) < 0) {
+			if (dc.compare(currentNode.getData(), data) < 0) {
 				currentNode = currentNode.getRightChild();
 			} else {
 				currentNode = currentNode.getLeftChild();
@@ -234,7 +239,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements ITree<T> {
 		while (node != null && node.getData() != data) {
 			//This method returning positive means the node is greater than the data
 			//If it returns negative, the node is less than the data
-			if (node.compareTo(data) < 0) {
+			if (dc.compare(node.getData(), data) < 0) {
 				node = node.getRightChild();
 			} else {
 				node = node.getLeftChild();
