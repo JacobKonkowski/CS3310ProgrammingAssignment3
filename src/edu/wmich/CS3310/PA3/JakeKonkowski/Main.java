@@ -17,9 +17,20 @@ public class Main {
 		//add more examples here
 
 		BinarySearchTree<Integer> bst1 = new BinarySearchTree<Integer>(array1, dc);
-		BinaryTree<Integer> bt2 = new BinaryTree<Integer>(array2);
+		BinaryTree<Integer> bt2 = new BinaryTree<Integer>();
+		bt2.setRoot(new Node<Integer>(4));
+		bt2.getRoot().setRightChild(new Node<Integer>(1));
+		bt2.getRoot().getRightChild().setLeftChild(new Node<Integer>(3));
+		bt2.getRoot().getRightChild().getLeftChild().setRightChild(new Node<Integer>(2));
+		bt2.getRoot().setLeftChild(new Node<Integer>(9));
+		bt2.getRoot().getLeftChild().setRightChild(new Node<Integer>(8));
+		bt2.getRoot().getLeftChild().getRightChild().setRightChild(new Node<Integer>(7));
+		bt2.getRoot().getLeftChild().setLeftChild(new Node<Integer>(12));
+		bt2.getRoot().getLeftChild().getLeftChild().setRightChild(new Node<Integer>(11));
+		bt2.getRoot().getLeftChild().getLeftChild().setLeftChild(new Node<Integer>(16));
+		bt2.getRoot().getLeftChild().getLeftChild().getLeftChild().setLeftChild(new Node<Integer>(20));
+		bt2.getRoot().getLeftChild().getLeftChild().getLeftChild().setRightChild(new Node<Integer>(13));
 		
-
 		//more trees for each example
 
 		TreeChecker<Integer> treeChecker = new TreeChecker<Integer>();
@@ -43,7 +54,7 @@ public class Main {
 		
 		Random random = new Random();
 		bst1.remove(bst1.getRoot(), array1[random.nextInt(array1.length)]);
-		bt2.remove(bt2.getRoot(), array2[random.nextInt(array2.length)]);
+		bt2.getRoot().setRightChild(null);
 		
 		bst1.inorder();
 		bst1.preorder();

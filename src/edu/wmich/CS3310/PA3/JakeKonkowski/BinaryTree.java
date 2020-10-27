@@ -7,6 +7,10 @@ public class BinaryTree<T extends Comparable<T>> implements ITree<T> {
 	
 	INode<T> root;
 	
+	public BinaryTree() {
+		
+	}
+	
 	public BinaryTree(INode<T> root) {
 		this.root = root;
 	}
